@@ -1,0 +1,19 @@
+---
+name: Theme Tests
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y shellcheck jq
+          npm install -g markdownlint-cli
+      - name: Run tests
+        run: |
+          shellcheck theme.sh test.sh
+          markdownlint README.md
+          python3 -m json.tool Black-Dark.json > /dev/null
+          ./test.sh

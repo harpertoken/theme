@@ -1,0 +1,32 @@
+---
+name: Security Scan
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '0 0 * * 0'  # Weekly
+
+jobs:
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Bandit Security Scan
+        run: |
+          pip install bandit
+          bandit -r . -f json -o bandit-report.json || true
+
+      - name: Run ShellCheck Security
+        run: |
+          shellcheck -f gcc *.sh
+
+      - name: Check for secrets
+        run: |
+          if grep -r "password\|secret\|api_key\|private_key" --exclude-dir=.git --exclude-dir=.github .; then
+            echo "Potential secrets found!"
+            exit 1
+          fi

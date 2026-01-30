@@ -1,0 +1,36 @@
+{
+  "_comment": "SPDX-License-Identifier: MIT",
+  "_copyright": "Copyright (c) 2026 harpertoken",
+  "_repository": "https://github.com/harpertoken",
+  "name": "Black Dark",
+  "type": "dark",
+  "colors": {
+    "editor.background": "#0a0a0a",
+    "editor.foreground": "#cccccc",
+    "activityBar.background": "#1a1a1a",
+    "sideBar.background": "#151515",
+    "statusBar.background": "#000000"
+  },
+  "tokenColors": [
+    {
+      "scope": ["comment"],
+      "settings": {
+        "foreground": "#666666",
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "scope": ["string"],
+      "settings": {
+        "foreground": "#cccccc"
+      }
+    },
+    {
+      "scope": ["keyword"],
+      "settings": {
+        "foreground": "#333333",
+        "fontStyle": "bold"
+      }
+    }
+  ]
+}

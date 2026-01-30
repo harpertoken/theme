@@ -1,0 +1,19 @@
+---
+repos:
+  - repo: local
+    hooks:
+      - id: shellcheck
+        name: shellcheck
+        entry: shellcheck
+        language: system
+        files: \.sh$
+      - id: json-check
+        name: JSON Check
+        entry: python3 -m json.tool
+        language: system
+        files: \.json$
+      - id: markdownlint
+        name: markdownlint
+        entry: markdownlint
+        language: system
+        files: \.md$
